@@ -72,28 +72,13 @@ private fun selectPizzaType(currentPizzaCity: PizzaCity) { //pizza chooser
 
 
 fun selectAddService(currentPizzaCity:PizzaCity) //additional service chooser
-{
-    when (currentPizzaCity)
-    {
-        is IReceiptPhoto ->
-        {
-            if (currentPizzaCity is IDrink)
-            {
-                currentPizzaCity.drinkSale()
-                if (currentPizzaCity is ISauce)
-                    currentPizzaCity.SauceSale()
-
-            }
-            currentPizzaCity.showReceiptPhoto()
-        }
-        is IDrink -> {
-            currentPizzaCity.drinkSale()
-        }
-        is ISauce ->
-        {
-            currentPizzaCity.SauceSale()
-        }
-    }
+{  
+    if (currentPizzaCity is IDrink)
+            {currentPizzaCity.drinkSale()}
+    if (currentPizzaCity is ISauce)
+            {currentPizzaCity.SauceSale()}
+    if (currentPizzaCity is IReceiptPhoto)
+            {currentPizzaCity.showReceiptPhoto()}
 }
 fun calcPercent(Amain: Int, Apart: Int):String //calculates a percent of an integer
 {
